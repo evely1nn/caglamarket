@@ -38,7 +38,11 @@ CREATE TABLE IF NOT EXISTS `musteriurun` (
   `urun_id` int(11) DEFAULT NULL,
   `tarih` date DEFAULT NULL,
   `miktar` double DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_musteriurun_musteri` (`musteri_id`),
+  KEY `FK_musteriurun_urun` (`urun_id`),
+  CONSTRAINT `FK_musteriurun_musteri` FOREIGN KEY (`musteri_id`) REFERENCES `musteri` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_musteriurun_urun` FOREIGN KEY (`urun_id`) REFERENCES `urun` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- cagla_market.musteriurun: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
